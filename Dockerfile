@@ -14,6 +14,7 @@ RUN npm install
 RUN npm run build
 
 # Prisma migrate
+COPY .env ./prisma/
 RUN npx prisma generate
 RUN npx prisma migrate reset
 RUN npx prisma migrate deploy
