@@ -22,7 +22,7 @@ ENV DATABASE_URL=postgresql://postgres:kRKQpGkBBmJlYtxuUkPcKKFuWNxAUGWJ@meticulo
 ENV SECRET_KEY=tVBfsPby6j2uBCsQMJ7G2piJ6r9GW7ln
 
 # Prisma migrate
-COPY .env ./prisma/
+# COPY .env ./prisma/
 RUN npx prisma generate
 RUN npx prisma migrate reset
 RUN npx prisma migrate deploy
