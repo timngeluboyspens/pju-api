@@ -18,7 +18,7 @@ ENV ADMIN_EMAIL=admin@gmail.com
 ENV ADMIN_PASSWORD=adminMSIB
 ENV API_SECRET_KEY=0123456789KHTIOP0123456789abcdef0123456789abcdef0123456789HJKOYV
 ENV CORS_ORIGIN=http://localhost:3000,http://localhost:5000,https://pju-monitoring-web-pens.vercel.app,https://pju-monitoring-web-pens-production.up.railway.app
-ENV DATABASE_URL=postgresql://postgres:kRKQpGkBBmJlYtxuUkPcKKFuWNxAUGWJ@meticulous-empathy.railway.internal:5432/railway
+ENV DATABASE_URL=postgresql://postgres:kRKQpGkBBmJlYtxuUkPcKKFuWNxAUGWJ@junction.proxy.rlwy.net:33051/railway
 ENV SECRET_KEY=tVBfsPby6j2uBCsQMJ7G2piJ6r9GW7ln
 
 # Prisma migrate
