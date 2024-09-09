@@ -23,12 +23,12 @@ ENV SECRET_KEY=tVBfsPby6j2uBCsQMJ7G2piJ6r9GW7ln
 
 # Prisma migrate
 # COPY .env ./prisma/
-RUN npx prisma generate
-RUN npx prisma migrate reset
-RUN npx prisma migrate deploy
+# RUN npx prisma generate
+# RUN npx prisma migrate reset
+# RUN npx prisma migrate deploy
 
 # Run Seed: node prisma/seed.js
-RUN node prisma/seed.js
+# RUN node prisma/seed.js
 
 # Ekspos port aplikasi
 EXPOSE 5000
