@@ -1,4 +1,10 @@
-const { createUser, getUserById, updateUser, deleteUser, getUserList } = require('../services/userManagementService');
+const {
+  createUser,
+  getUserById,
+  updateUser,
+  deleteUser,
+  getUserList,
+} = require('../services/userManagementService');
 
 const createUserController = async (req, res) => {
   try {
@@ -105,4 +111,10 @@ const getUserListController = async (req, res) => {
   }
 };
 
-module.exports = { createUserController, getUserByIdController, updateUserController, deleteUserController, getUserListController };
+module.exports = {
+  createUserController,
+  getUserByIdController,
+  updateUserController,
+  deleteUserController,
+  getUserListController,
+};

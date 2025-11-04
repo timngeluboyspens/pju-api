@@ -1,6 +1,6 @@
-const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
-const CustomError = require("../utils/customError");
+const CustomError = require('../utils/customError');
 
 // get pju configs by pjuId
 const getConfigsByPjuId = async (pjuId) => {
@@ -32,28 +32,28 @@ const getConfigByName = async (name) => {
 };
 
 // check specific pju config
-const checkDataSentConfig = async (pjuId, dataSent = "") => {
+const checkDataSentConfig = async (pjuId, dataSent = '') => {
   if (!dataSent) {
-    throw new CustomError("Specific config is null", 400);
+    throw new CustomError('Specific config is null', 400);
   }
 
   // get cache first if exist
   const config = await getConfigsByPjuId(pjuId);
 
   if (!config || config.length === 0) {
-    throw new CustomError("PJU configuration not found", 404);
+    throw new CustomError('PJU configuration not found', 404);
   }
 
-  const dataConfig = config.find((c) => c.name === "Data-Sent");
+  const dataConfig = config.find((c) => c.name === 'Data-Sent');
   if (!dataConfig) {
-    throw new CustomError("Data-Sent configuration not found", 404);
+    throw new CustomError('Data-Sent configuration not found', 404);
   }
 
   let parsedConfig;
   try {
     parsedConfig = JSON.parse(dataConfig.value);
   } catch (error) {
-    throw new CustomError("Invalid configuration format", 500);
+    throw new CustomError('Invalid configuration format', 500);
   }
 
   if (!parsedConfig[dataSent]) {
@@ -63,8 +63,23 @@ const checkDataSentConfig = async (pjuId, dataSent = "") => {
   return true;
 };
 
+const createConfig = async (data) => {
+  const newConfig = await prisma.config.create({
+    data: data,
+  });
+  return newConfig;
+};
+
+const getAllConfigs = async () => {
+  const configs = await prisma.config.findMany();
+  return configs;
+};
+
 module.exports = {
   getConfigById,
   getConfigsByPjuId,
   checkDataSentConfig,
+  getConfigByName,
+  createConfig,
+  getAllConfigs,
 };

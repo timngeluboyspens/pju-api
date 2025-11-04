@@ -21,8 +21,12 @@ const { getProfileController, updateProfileController, deleteProfileController, 
 const { updateProfileValidation } = require('../validate/profile/updateProfileValidation.js');
 const { updatePasswordValidation } = require('../validate/profile/updatePasswordValidation.js');
 const { getHourlySensorData } = require('../services/sensor.js');
+const { getPjuListController, createPjuController } = require('../controller/pjuController.js');
+const { getConfigListController, createConfigController } = require('../controller/configController.js');
 
 const router = express.Router();
+
+
 
 // router.post("/data", AddDataSensor);
 // router.get("/data", GetDataSensor);
@@ -81,6 +85,12 @@ router.get('/profile', authenticateToken, getProfileController);
 router.patch('/profile/update', authenticateToken, updateProfileValidation, updateProfileController);
 router.delete('/profile/delete', authenticateToken, deleteProfileController);
 router.patch('/profile/update-password', authenticateToken, updatePasswordValidation, updatePasswordController);
+
+router.post('/pju', validateKey, createPjuController);
+router.get('/pju', validateKey, getPjuListController);
+
+router.post('/config', validateKey, createConfigController);
+router.get('/config', validateKey, getConfigListController);
 
 // get api key
 router.get('/api-key', authenticateToken, getApiKey);
